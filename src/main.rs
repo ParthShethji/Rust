@@ -108,11 +108,31 @@
     // fn main() {
     //     let rect1 = Rect {
     //         width: 38,
-    //         height: 43,
+    //         height: 38,
     //     };
     //     println!("The area of the rectangle is:  {} ", rect1.area());
+    //     println!("The goodness of rectangle is {}", rect1.good_rectangel())
     // }
-    
+
+
+// Traits - how you handle classes
+
+    // trait Goodness {
+    //     // a good rectangle is a square
+    //     fn good_rectangel(&self)-> bool;
+    // }
+
+    // impl Goodness for Rect{
+    //     fn good_rectangel(&self)-> bool{
+    //         if self.width==self.height {
+    //             true
+    //         }
+    //         else {
+    //             false
+    //         }
+    //     }
+
+    // }
 
 // enums - makes code more stricter as you can play with only defined values
     // enum Direction {
@@ -240,3 +260,60 @@
 //     let local = Local::now();
 //     println!("Current date and time in local: {}", local);
 // }
+
+
+// Vectors
+
+// fn main() {
+//     let mut vec: Vec<i64> = vec! [1,2,3,4,5];
+//     vec. len();
+//     vec[0];
+//     vec.push(6);
+//     vec.remove(0);
+//     println!("{:?}", vec);
+// }
+
+
+// HashMap
+
+// use std::collections::HashMap;
+
+// fn main(){
+//     let mut map = HashMap::new();
+//     map.insert(1, "John");
+//     map.insert(2, "Parth");
+//     println!("{:?}", map);
+
+//     let str1 = map.get(&3);
+//     println!("{:?}", str1);
+
+//     map.remove(&2);
+//     println!("{:?}", map);
+
+// }
+
+// Results
+
+#[derive (Debug)]
+enum MyError {
+    Error1
+}
+// Err, an enum that contains an error code
+// Ok(value), A wrapper that contains a value
+fn divide (dividend: i32, divisor: i32) -> Result<i32, MyError> {
+    if dividend % divisor != 0 {
+        Err (MyError:: Error1)
+    } else {
+        Ok(dividend / divisor)
+    }
+}
+
+fn main() {
+    let divide= divide(4, 0);
+    // let res = divide2.expect("we crashed");
+    match divide {
+        Ok (v) => println!("{}", v),
+        Err (v) => println!("{:?}", v)
+}}
+
+
